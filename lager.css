@@ -1,0 +1,5 @@
+body { font-family: Arial, sans-serif; text-align: center; }
+.container { max-width: 400px; margin: auto; padding: 20px; }
+ul { list-style: none; padding: 0; }
+li { margin: 5px 0; padding: 10px; background: #ddd; }
+button { margin-left: 5px; }

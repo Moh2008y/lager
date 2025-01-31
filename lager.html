@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Utstyr</title>
+    <link rel="stylesheet" href="lager.css">
+    
 </head>
 <body>
-    
+    <div class="container">
+        <h2>Utstyrsliste</h2>
+        <input id="newItem" placeholder="Legg til utstyr">
+        <button onclick="addItem()">Legg til</button>
+        <ul id="list"></ul>
+    </div>
+    <script>
+        let items = [];
+        function render() {
+            document.getElementById('list').innerHTML = items.map((item, i) => 
+                `<li>${item.name} (${item.status}) <button onclick="toggle(${i})">Endre</button> <button onclick="remove(${i})">Slett</button></li>`).join('');
+        }
+        function addItem() {
+            let name = document.getElementById('newItem').value;
+            if (name) items.push({ name, status: 'tilgjengelig' });
+            document.getElementById('newItem').value = '';
+            render();
+        }
+        function toggle(i) { items[i].status = items[i].status === 'tilgjengelig' ? 'utleid' : 'tilgjengelig'; render(); }
+        function remove(i) { items.splice(i, 1); render(); }
+    </script>
 </body>
 </html>
